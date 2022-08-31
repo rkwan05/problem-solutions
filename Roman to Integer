@@ -1,0 +1,50 @@
+class Solution:
+    def romanToInt(self, s: str) -> int:
+        sum = 0
+        i=0
+        subtract = False
+        while i <len(s):
+            subtract = False
+
+            if(s[i] == "I"):
+                if(i != len(s)-1 and (s[i+1]=="V" or s[i+1]=="X")):
+                    if(s[i+1] == "V"):
+                        sum+=4
+                    elif(s[i+1]=="X"):
+                        sum+=9
+                    subtract = True
+                else:
+                    sum+=1
+            elif(s[i]=="V"):
+                sum += 5
+            elif(s[i]=="X"):
+                if(i != len(s)-1 and (s[i+1]=="L" or s[i+1]=="C")):
+                    if(s[i+1] == "L"):
+                        sum+=40
+                    elif(s[i+1]=="C"):
+                        sum+=90
+                    subtract = True
+
+                else:
+                    sum+=10
+            elif(s[i]=="L"):
+                sum+=50
+            elif(s[i]=="C"):
+                if(i != len(s)-1 and (s[i+1]=="D" or s[i+1]=="M")):
+                    if(s[i+1] == "D"):
+                        sum+=400
+                    elif(s[i+1]=="M"):
+                        sum+=900
+                    subtract = True
+                else:
+                    sum+=100
+            elif(s[i]=="D"):
+                sum+=500
+            elif(s[i]=="M"):
+                sum+=1000
+            if(subtract == True):
+                i+=2
+            else:
+                i+=1
+
+        return sum
