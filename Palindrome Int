@@ -1,0 +1,15 @@
+class Solution:
+    def isPalindrome(self, x: int) -> bool:
+        xString = str(x)
+        xNew = ""
+        
+        i = len(xString) - 1
+        while i >= 0:
+            xNew+=xString[i]
+            i-=1
+        
+        if(xString == xNew):
+            return True
+        return False
+            
+        
